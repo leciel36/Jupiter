@@ -42,25 +42,29 @@ public class register extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		DBConnection connection = DBConnectionFactory.getConnection();
-		System.out.println("hello");
 		try {
 			JSONObject input = RpcHelper.readJSONObject(request);
 			String userId = input.getString("user_id");
 			String password = input.getString("password");
-			String firstName = input.getString("first_name");
-			String lastName = input.getString("last_name");
-			System.out.println(userId + password + firstName + lastName);
+			String firstname = input.getString("first_name");
+			String lastname = input.getString("last_name");
 			
-			connection.setRegistration(userId, password, firstName, lastName);
-			RpcHelper.writeJsonObject(response, new JSONObject().put("status", "OK"));
+			JSONObject obj = new JSONObject();
+			if (connection.registerUser(userId, password, firstname, lastname)) {
+				obj.put("status", "OK");
+			} else {
+				obj.put("status", "User Already Exists");
+			}
+			RpcHelper.writeJsonObject(response, obj);
 		} catch (Exception e) {
-	  		 e.printStackTrace();
-	  	} finally {
-	  		 connection.close();
-	  	}
-		
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
 	}
+
 
 }

@@ -96,7 +96,7 @@ public interface DBConnection {
 	 * 
 	 * @param item
 	 */
-	public void setRegistration(String userId, String password, String firstName, String lastName);
+	public boolean registerUser(String userId, String password, String firstName, String lastName);
 	
 
 }
