@@ -84,11 +84,11 @@ ul {
 .container>header {
 	align-items: center;
 	background:
-		url('http://eudreamvilla.com/wp-content/uploads/2017/10/romantic-dinner.jpg')
+		url('Concert.jpg')
 		no-repeat 50% 40%;
 	background-size: 100%;
 	display: flex;
-	height: 250px;
+	height: 280px;
 }
 
 .container>header p {
