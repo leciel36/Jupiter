@@ -41,9 +41,8 @@ public class GeoRecommendation {
 		Set<String> visitedItemIds = new HashSet<>();
 		for (Entry<String, Integer> category : categoryList){
 			List<Item> items = connection.searchItems(lat, lon, category.getKey());
-			
+			List<Item> currCategoryItemList = new ArrayList<>();
 			for (Item item : items) {
-				List<Item> currCategoryItemList = new ArrayList<>();
 				if (!favoritedItemIds.contains(item.getItemId()) && !visitedItemIds.contains(item.getItemId())) {
 					currCategoryItemList.add(item);
 					visitedItemIds.add(item.getItemId());
@@ -51,8 +50,8 @@ public class GeoRecommendation {
 				Collections.sort(currCategoryItemList, (Item i1, Item i2)->{
 					return Double.compare(i2.getDistance(), i1.getDistance());
 				});
-				recommendedItems.addAll(currCategoryItemList);
 			}
+			recommendedItems.addAll(currCategoryItemList);
 		}
 		
 		connection.close();
