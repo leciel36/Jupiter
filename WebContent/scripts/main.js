@@ -12,8 +12,8 @@
    * Initialize major event handlers
    */
   function init() {
-    // register event listeners
 	displySlideshow();
+    // register event listeners
     document.querySelector('#login-form-btn').addEventListener('click', onSessionInvalid);
     document.querySelector('#login-btn').addEventListener('click', login);
     document.querySelector('#register-form-btn').addEventListener('click', showRegisterForm);
@@ -22,7 +22,7 @@
     document.querySelector('#fav-btn').addEventListener('click', loadFavoriteItems);
     document.querySelector('#recommend-btn').addEventListener('click', loadRecommendedItems);
     validateSession();
-    // onSessionValid({"user_id":"1111","name":"John Smith","status":"OK"});
+  }
 
   /**
    * Session
@@ -181,8 +181,8 @@
 	    x[myIndex-1].style.display = "block";  
 	    setTimeout(carousel, 2000); // Change image every 2 seconds
 	  }
-	}
   }
+  
   
   // -----------------------------------
   // Login
@@ -204,10 +204,11 @@
       // successful callback
       function(res) {
         var result = JSON.parse(res);
+        console.log(res);
 
         // successfully logged in
         if (result.status === 'OK') {
-          onSessionValid(result);
+        	onSessionValid(result);
         }
       },
 

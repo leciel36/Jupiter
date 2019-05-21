@@ -96,7 +96,7 @@
 
         clearLoginError();
         showElement(loginForm);
-      }
+    }
     
     function hideElement(element){
     	element.style.display = 'none';
