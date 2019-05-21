@@ -13,6 +13,7 @@
    */
   function init() {
     // register event listeners
+	displySlideshow();
     document.querySelector('#login-form-btn').addEventListener('click', onSessionInvalid);
     document.querySelector('#login-btn').addEventListener('click', login);
     document.querySelector('#register-form-btn').addEventListener('click', showRegisterForm);
@@ -22,7 +23,6 @@
     document.querySelector('#recommend-btn').addEventListener('click', loadRecommendedItems);
     validateSession();
     // onSessionValid({"user_id":"1111","name":"John Smith","status":"OK"});
-  }
 
   /**
    * Session
@@ -165,7 +165,25 @@
       loadNearbyItems();
     });
   }
+  
+  function displySlideshow(){
+	  var myIndex = 0;
+	  carousel();
 
+	  function carousel() {
+	    var i;
+	    var x = document.getElementsByClassName("mySlides");
+	    for (i = 0; i < x.length; i++) {
+	      x[i].style.display = "none";  
+	    }
+	    myIndex++;
+	    if (myIndex > x.length) {myIndex = 1}    
+	    x[myIndex-1].style.display = "block";  
+	    setTimeout(carousel, 2000); // Change image every 2 seconds
+	  }
+	}
+  }
+  
   // -----------------------------------
   // Login
   // -----------------------------------

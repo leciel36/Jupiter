@@ -73,7 +73,7 @@ ul {
  */
 .container {
 	margin: 60px auto;
-	max-width: 1000px;
+	max-width: 100%;
 	min-width: 600px;
 	box-shadow: 0px 2px 10px #333333;
 }
@@ -81,26 +81,30 @@ ul {
 /**
  * main header
  */
-.container>header {
-	align-items: center;
-	background:
-		url('Concert.jpg')
-		no-repeat 50% 40%;
-	background-size: 100%;
-	display: flex;
-	height: 280px;
-}
-
-.container>header p {
-	border-left: 1px solid #FFFFFF;
-	font-weight: 400;
+ 
+ .container>header {
+ 	position: relative;
+  	height: 450px;
+  	overflow: hidden;
+ }
+ 
+ .container>header>img {
+ 	width: 100%;
+ 	margin-top: -15%;
+ }
+ 
+ .container>header p {
+ 	border-left: 1px solid #FFFFFF;
+ 	font-weight: 400;
 	font-size: 2.5em;
 	line-height: 1em;
-	margin-left: 220px;
 	padding-left: 5px;
-}
-
-.container>header span {
+ 	position: absolute;
+  	top: 50%;
+  	left: 20%;
+ }
+ 
+ .container>header span {
 	color: #f90404;
 }
 
